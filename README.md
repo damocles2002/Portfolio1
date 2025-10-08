@@ -1,1 +1,1 @@
-# Portfolio1
+Bienvenue sur mon portfolio professionnel. Ce site présente mon parcours, mes compétences techniques et mes projets majeurs réalisés dans divers domaines. Construit avec Tailwind CSS en mode sombre, il offre une navigation claire et moderne. N’hésitez pas à consulter mon CV ou à me contacter via la page dédiée.
