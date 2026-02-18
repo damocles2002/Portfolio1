@@ -11,7 +11,6 @@
       --surface: #161616;
       --surface2: #1e1e1e;
       --accent: #c8f04b;
-      --accent2: #4bf0c8;
       --text: #f0ede6;
       --muted: #8a8a8a;
       --border: #2a2a2a;
@@ -62,8 +61,7 @@
 
     .badge::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--accent);
       animation: pulse 2s infinite;
@@ -82,10 +80,7 @@
       letter-spacing: -0.02em;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    h1 em { font-style: italic; color: var(--accent); }
 
     .subtitle {
       font-family: 'DM Mono', monospace;
@@ -104,11 +99,7 @@
       margin-bottom: 2.5rem;
     }
 
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
 
     .contact-links a {
       font-family: 'DM Mono', monospace;
@@ -122,12 +113,7 @@
     }
 
     .contact-links a:hover { color: var(--accent); }
-
-    .contact-links a::before {
-      content: '→';
-      color: var(--accent);
-      font-size: 0.9rem;
-    }
+    .contact-links a::before { content: '→'; color: var(--accent); font-size: 0.9rem; }
 
     .hero-right {
       background: var(--surface);
@@ -142,13 +128,12 @@
     }
 
     .hero-right::before {
-      content: 'CYBER\ASÉCURITÉ';
+      content: 'CYBER SÉCURITÉ';
       font-family: 'DM Serif Display', serif;
-      font-size: 9rem;
+      font-size: 7rem;
       color: rgba(200, 240, 75, 0.04);
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%) rotate(-15deg);
       white-space: pre;
       line-height: 1;
@@ -165,7 +150,7 @@
 
     .stat { border-top: 1px solid var(--border); padding-top: 1rem; }
     .stat-num { font-family: 'DM Serif Display', serif; font-size: 3rem; color: var(--accent); line-height: 1; }
-    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
 
     section { padding: 6rem 4rem; border-top: 1px solid var(--border); }
 
@@ -173,7 +158,28 @@
     .section-num { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; }
     h2 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; font-weight: 400; }
 
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .skill-block { background: var(--bg); padding: 2rem 1.8rem; transition: background 0.2s; }
+    .skill-block:hover { background: var(--surface2); }
+    .skill-block h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .skill-block li { font-size: 0.85rem; color: #a0a0a0; }
+
+    .exp-list { display: flex; flex-direction: column; }
 
     .exp-item {
       display: grid;
@@ -192,16 +198,23 @@
     .exp-content p { font-size: 0.88rem; color: #a0a0a0; line-height: 1.75; margin-bottom: 0.5rem; }
 
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
-    .tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 2px; letter-spacing: 0.05em; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
 
-    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .skill-block { background: var(--bg); padding: 2rem 1.8rem; transition: background 0.2s; }
-    .skill-block:hover { background: var(--surface2); }
-    .skill-block h4 { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
-    .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .skill-block li { font-size: 0.85rem; color: #a0a0a0; }
-
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
 
     .project-card {
       background: var(--bg);
@@ -224,11 +237,55 @@
     .edu-content .institution { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
     .edu-content .location { font-size: 0.78rem; color: #555; }
 
-    footer { border-top: 1px solid var(--border); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    .loisirs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .loisir-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .loisir-card:hover { background: var(--surface2); }
+    .loisir-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .loisir-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 400; }
+    .loisir-card p { font-size: 0.85rem; color: #8a8a8a; line-height: 1.7; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     footer .name { font-family: 'DM Serif Display', serif; font-size: 1.5rem; }
     footer .copy { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
 
-    .cta-link { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; text-decoration: none; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+
     .cta-link:hover { background: var(--accent); color: var(--bg); }
 
     @media (max-width: 900px) {
@@ -237,13 +294,14 @@
       section { padding: 4rem 1.5rem; }
       .exp-item, .edu-item { grid-template-columns: 1fr; gap: 1rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .projects-grid, .loisirs-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+<!-- HERO -->
 <header>
   <div class="hero-left">
     <span class="badge">Disponible pour alternance / stage</span>
@@ -253,14 +311,11 @@
       Étudiant en Bachelor Cybersécurité, issu d'une classe préparatoire scientifique MP.
       Solides fondements en mathématiques, algorithmique et sciences de l'ingénieur,
       appliqués à la sécurité des systèmes d'information et à l'analyse de données.
-      En quête d'un cycle ingénieur pour approfondir mon expertise technique.
     </p>
     <div class="contact-links">
       <a href="tel:+33622200501">+33 6 22 20 05 01</a>
       <a href="mailto:ngongangdjomo@gmail.com">ngongangdjomo@gmail.com</a>
-      <a href="https://www.linkedin.com/in/ngongang-glyne-24920027a" target="_blank">linkedin.com/in/ngongang-glyne</a>
-      <a href="https://github.com/damocles2002" target="_blank">github.com/damocles2002</a>
-      <a href="mailto:glyne-flankine.ngongang-djomo@epita.fr">glyne-flankine.ngongang-djomo@epita.fr</a>
+      <a href="https://www.linkedin.com/in/ngongang-glyne-24920027a" target="_blank">www.linkedin.com/in/ngongang glyne-24920027a</a>
     </div>
   </div>
   <div class="hero-right">
@@ -268,14 +323,64 @@
       <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Expériences Data</div></div>
       <div class="stat"><div class="stat-num">MP</div><div class="stat-label">Classe Prépa Sci.</div></div>
       <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Langages maîtrisés</div></div>
-      <div class="stat"><div class="stat-num">Île-de-France</div><div class="stat-label">Localisation</div></div>
+      <div class="stat"><div class="stat-num">IDF</div><div class="stat-label">Île-de-France</div></div>
     </div>
   </div>
 </header>
 
+<!-- 01 — CONNAISSANCES INFORMATIQUES -->
 <section>
   <div class="section-header">
     <span class="section-num">01 —</span>
+    <h2>Connaissances informatiques</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <h4>Langages</h4>
+      <ul>
+        <li>Python (Pandas, PySpark)</li>
+        <li>SQL / SAS</li>
+        <li>C / C++</li>
+        <li>Java</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Systèmes & Réseaux</h4>
+      <ul>
+        <li>Windows Server (2000→2022)</li>
+        <li>Linux (RedHat, Ubuntu)</li>
+        <li>TCP/IP, DHCP, VLAN, Firewall</li>
+        <li>Active Directory</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Sécurité & Cloud</h4>
+      <ul>
+        <li>Cybersécurité & Anonymisation</li>
+        <li>Gestion des accès</li>
+        <li>Azure</li>
+        <li>Kubernetes</li>
+        <li>VMware / Proxmox</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Outils</h4>
+      <ul>
+        <li>Power BI</li>
+        <li>Oracle SQL Developer</li>
+        <li>Git / GitHub</li>
+        <li>SharePoint</li>
+        <li>Eclipse IDE</li>
+        <li>Excel, Word, PowerPoint</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — EXPÉRIENCES PROFESSIONNELLES -->
+<section style="background: var(--surface);">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
     <h2>Expériences professionnelles</h2>
   </div>
   <div class="exp-list">
@@ -316,6 +421,17 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- 03 — AUTRES EXPÉRIENCES -->
+<section>
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2>Autres expériences</h2>
+  </div>
+  <div class="exp-list">
+
     <div class="exp-item">
       <div class="exp-meta">
         <div class="exp-date">Nov. 2025 – Présent</div>
@@ -324,81 +440,77 @@
       </div>
       <div class="exp-content">
         <h3>Responsable Barman</h3>
-        <p>Gestion du service bar, coordination d'équipe et relation client dans un environnement dynamique.</p>
+        <p>Gestion du service bar, coordination d'équipe et relation client dans un environnement dynamique et exigeant.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Oct. 2024 – Sept. 2025</div>
+        <div class="exp-company">The Versailles</div>
+        <div class="exp-location">Paris, France</div>
+      </div>
+      <div class="exp-content">
+        <h3>Barman</h3>
+        <p>Service bar et accueil clientèle dans un établissement parisien de standing.</p>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- 04 — PROJETS & RÉALISATIONS -->
 <section style="background: var(--surface);">
   <div class="section-header">
-    <span class="section-num">02 —</span>
-    <h2>Compétences</h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <h4>Langages</h4>
-      <ul><li>Python (Pandas, PySpark)</li><li>SQL / SAS</li><li>C / C++</li><li>Java</li></ul>
-    </div>
-    <div class="skill-block">
-      <h4>Systèmes & Réseaux</h4>
-      <ul><li>Windows Server (2000→2022)</li><li>Linux (RedHat, Ubuntu)</li><li>TCP/IP, DHCP, VLAN, Firewall</li><li>Active Directory</li></ul>
-    </div>
-    <div class="skill-block">
-      <h4>Sécurité & Cloud</h4>
-      <ul><li>Cybersécurité & Anonymisation</li><li>Gestion des accès</li><li>Azure</li><li>Kubernetes</li><li>VMware / Proxmox</li></ul>
-    </div>
-    <div class="skill-block">
-      <h4>Outils</h4>
-      <ul><li>Power BI</li><li>Oracle SQL Developer</li><li>Eclipse IDE</li><li>Git / GitHub</li><li>SharePoint</li></ul>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-header">
-    <span class="section-num">03 —</span>
+    <span class="section-num">04 —</span>
     <h2>Projets & réalisations</h2>
   </div>
   <div class="projects-grid">
+
     <div class="project-card">
       <h3>Fil Rouge — Modernisation d'infrastructure</h3>
-      <p>Projet scolaire en cours. Modernisation des infrastructures informatiques d'une entreprise lors de son déménagement entre Genève et Paris.</p>
+      <p>Projet scolaire en cours. Modernisation complète des infrastructures d'une entreprise lors de son déménagement entre Genève et Paris.</p>
       <div class="tags"><span class="tag">Réseau</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span></div>
     </div>
+
     <div class="project-card">
       <h3>Sécurisation d'un SI d'entreprise</h3>
-      <p>Évaluation de l'architecture, identification des risques, proposition de mesures physiques et logiques, analyse comparative des schémas de sauvegarde.</p>
+      <p>Évaluation de l'architecture, identification des risques, mesures physiques et logiques, analyse comparative des schémas de sauvegarde.</p>
       <div class="tags"><span class="tag">Cybersécurité</span><span class="tag">Audit</span><span class="tag">Pare-feu</span></div>
     </div>
+
     <div class="project-card">
       <h3>Refonte & optimisation de scripts</h3>
       <p>Migration d'un script de calcul d'indicateurs qualité de SAS/SQL vers Python. Automatisation Excel et visualisations Power BI.</p>
       <div class="tags"><span class="tag">Python</span><span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
     </div>
+
     <div class="project-card">
       <h3>Application gestion notes & absences</h3>
-      <p>Conception BDD et développement complet selon un cycle en V. Sécurisation et automatisation des traitements.</p>
+      <p>Conception BDD et développement complet selon un cycle en V. Sécurisation et automatisation des traitements de données.</p>
       <div class="tags"><span class="tag">Oracle SQL</span><span class="tag">Eclipse IDE</span><span class="tag">Cycle en V</span></div>
     </div>
+
   </div>
 </section>
 
-<section style="background: var(--surface);">
+<!-- 05 — DIPLÔMES & FORMATIONS -->
+<section>
   <div class="section-header">
-    <span class="section-num">04 —</span>
-    <h2>Formation</h2>
+    <span class="section-num">05 —</span>
+    <h2>Diplômes & formations</h2>
   </div>
   <div class="edu-list">
+
     <div class="edu-item">
       <div class="edu-date">2024 – 2026</div>
       <div class="edu-content">
         <h3>Bachelor Cybersécurité</h3>
-        <div class="institution">INGETIS</div>
-        <div class="location">75005 Paris, France</div>
+        <div class="institution">INGETIS — École d'informatique</div>
+        <div class="location">62 bis rue Gay-Lussac, 75005 Paris, France</div>
       </div>
     </div>
+
     <div class="edu-item">
       <div class="edu-date">2022 – 2024</div>
       <div class="edu-content">
@@ -407,14 +519,16 @@
         <div class="location">Maubeuge, France — Mathématiques, Statistiques & Programmation</div>
       </div>
     </div>
+
     <div class="edu-item">
       <div class="edu-date">2022 – 2023</div>
       <div class="edu-content">
         <h3>Faculté Informatique</h3>
         <div class="institution">Université de Valenciennes</div>
-        <div class="location">Campus Mont Houy, Valenciennes, France</div>
+        <div class="location">Campus Mont Houy, 59313 Valenciennes, France</div>
       </div>
     </div>
+
     <div class="edu-item">
       <div class="edu-date">2020 – 2022</div>
       <div class="edu-content">
@@ -423,6 +537,7 @@
         <div class="location">Douala, Cameroun</div>
       </div>
     </div>
+
     <div class="edu-item">
       <div class="edu-date">2019 – 2020</div>
       <div class="edu-content">
@@ -431,12 +546,37 @@
         <div class="location">Douala, Cameroun</div>
       </div>
     </div>
+
   </div>
 </section>
 
+<!-- 06 — LOISIRS -->
+<section style="background: var(--surface);">
+  <div class="section-header">
+    <span class="section-num">06 —</span>
+    <h2>Loisirs</h2>
+  </div>
+  <div class="loisirs-grid">
+
+    <div class="loisir-card">
+      <div class="loisir-icon">🏀</div>
+      <h3>Basketball</h3>
+      <p>Pratique compétitive au sein de UV Douala (2021). Sport d'équipe favorisant esprit de cohésion, discipline et dépassement de soi.</p>
+    </div>
+
+    <div class="loisir-card">
+      <div class="loisir-icon">🤝</div>
+      <h3>Activités associatives</h3>
+      <p>Aide aux personnes âgées via le réseau PAM. Engagement bénévole et sens du service au cœur de mon parcours personnel.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="name">Glyne Ngongang</div>
-  <div class="copy">Île-de-France · Français & Anglais · Basketball · Aide aux personnes âgées</div>
+  <div class="copy">Île-de-France · Français & Anglais · Disponible pour stage / alternance</div>
   <a href="mailto:ngongangdjomo@gmail.com" class="cta-link">Me contacter →</a>
 </footer>
 
