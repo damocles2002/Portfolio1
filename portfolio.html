@@ -1,66 +1,444 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Glyne Ngongang</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Glyne Ngongang</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --accent: #c8f04b;
+      --accent2: #4bf0c8;
+      --text: #f0ede6;
+      --muted: #8a8a8a;
+      --border: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+      width: fit-content;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .profil-text {
+      font-size: 0.95rem;
+      color: #b0ada6;
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--accent); }
+
+    .contact-links a::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .hero-right {
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 4rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::before {
+      content: 'CYBER\ASÉCURITÉ';
+      font-family: 'DM Serif Display', serif;
+      font-size: 9rem;
+      color: rgba(200, 240, 75, 0.04);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      white-space: pre;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .stat { border-top: 1px solid var(--border); padding-top: 1rem; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 3rem; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; }
+
+    section { padding: 6rem 4rem; border-top: 1px solid var(--border); }
+
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
+    .section-num { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; }
+    h2 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; font-weight: 400; }
+
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      gap: 3rem;
+      transition: background 0.2s;
+    }
+
+    .exp-item:hover { background: rgba(200,240,75,0.02); }
+    .exp-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .exp-company { font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .exp-location { font-size: 0.78rem; color: var(--muted); }
+    .exp-content h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.8rem; }
+    .exp-content p { font-size: 0.88rem; color: #a0a0a0; line-height: 1.75; margin-bottom: 0.5rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 2px; letter-spacing: 0.05em; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .skill-block { background: var(--bg); padding: 2rem 1.8rem; transition: background 0.2s; }
+    .skill-block:hover { background: var(--surface2); }
+    .skill-block h4 { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+    .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .skill-block li { font-size: 0.85rem; color: #a0a0a0; }
+
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+    .project-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after { content: ''; position: absolute; bottom: 0; left: 0; height: 2px; width: 0; background: var(--accent); transition: width 0.3s; }
+    .project-card:hover { background: var(--surface2); }
+    .project-card:hover::after { width: 100%; }
+    .project-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 0.8rem; }
+    .project-card p { font-size: 0.85rem; color: #8a8a8a; line-height: 1.7; margin-bottom: 1.2rem; }
+
+    .edu-list { display: flex; flex-direction: column; }
+    .edu-item { display: grid; grid-template-columns: 220px 1fr; border-top: 1px solid var(--border); padding: 2rem 0; gap: 3rem; }
+    .edu-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    .edu-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+    .edu-content .institution { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+    .edu-content .location { font-size: 0.78rem; color: #555; }
+
+    footer { border-top: 1px solid var(--border); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    footer .name { font-family: 'DM Serif Display', serif; font-size: 1.5rem; }
+    footer .copy { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+
+    .cta-link { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; text-decoration: none; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .cta-link:hover { background: var(--accent); color: var(--bg); }
+
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; gap: 1rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 p-8">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8">Portfolio de Glyne Ngongang</h1>
+<body>
 
-        <h2 class="text-2xl font-semibold mb-4">Compétences Techniques</h2>
-        <ul class="list-disc list-inside mb-8">
-            <li><strong>Analyse de Données</strong> : SAS, SQL, Python (Pandas, pyspark), Power BI</li>
-            <li><strong>Automatisation des Flux de Données</strong> : SQL, Python, Excel, Power BI</li>
-            <li><strong>Sécurité des Données</strong> : Cybersécurité, Anonymisation, Gestion des Accès, Intégrité</li>
-            <li><strong>Développement Logiciel</strong> : Oracle SQL Developer, Eclipse IDE, Cycle en V</li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold mb-4">Compétences Professionnelles</h2>
-        <ul class="list-disc list-inside mb-8">
-            <li><strong>Analyse des Besoins Métier</strong></li>
-            <li><strong>Documentation Technique</strong></li>
-            <li><strong>Gestion de Projet</strong></li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold mb-4">Projets et Réalisations</h2>
-
-        <div class="project mb-8">
-            <h3 class="text-xl font-semibold mb-2">Sécurisation des Systèmes d’Information</h3>
-            <p><strong>Description</strong> : Évaluation de l'architecture de système d'information et identification des risques. Proposition de mesures de sécurité physique et logique. Recommandations de bonnes pratiques de sauvegarde régulière.</p>
-            <p><strong>Technologies</strong> : Notions de cybersécurité</p>
-        </div>
-
-        <div class="project mb-8">
-            <h3 class="text-xl font-semibold mb-2">Développement d’une Application de Gestion de Notes et Absences</h3>
-            <p><strong>Description</strong> : Conception de la base de données et codage de l'application. Implémentation suivant un cycle en V. Sécurisation et automatisation des traitements des données.</p>
-            <p><strong>Technologies</strong> : Oracle SQL Developer, Eclipse IDE</p>
-        </div>
-
-        <div class="project mb-8">
-            <h3 class="text-xl font-semibold mb-2">Refonte et Optimisation de Scripts de Calcul d'Indicateurs</h3>
-            <p><strong>Description</strong> : Optimisation d'un script de calcul d'indicateurs de qualité des données de SAS, SQL vers Python. Automatisation de l'alimentation des résultats dans Excel et intégration de visualisations dans Power BI.</p>
-            <p><strong>Technologies</strong> : SAS, SQL, Python (Pandas, pyspark), Power BI</p>
-        </div>
-
-        <div class="project mb-8">
-            <h3 class="text-xl font-semibold mb-2">Automatisation et Visualisation des Données</h3>
-            <p><strong>Description</strong> : Structuration et automatisation du flux de collecte, traitement et stockage des données. Développement de rapports interactifs sous Power BI.</p>
-            <p><strong>Technologies</strong> : Power BI, SQL, Python (Numpy, Matplotlib, Pandas)</p>
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-        <ul class="list-disc list-inside mb-8">
-            <li><strong>Email</strong> : <a href="glyne-flankine.ngongang-djomo@epita.fr" class="text-blue-500 hover:underline">glyne-flankine.ngongang-djomo.email@example.com</a></li>
-            <li><strong>LinkedIn</strong> : <a href="https://www.linkedin.com/in/votreprofil/" target="_blank" class="text-blue-500 hover:underline">https://www.linkedin.com/in/votreprofil/</a></li>
-            <li><strong>GitHub</strong> : <a href="https://github.com/damocles2002" target="_blank" class="text-blue-500 hover:underline">https://github.com/damocles2002</a></li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold mb-4">Télécharger mon CV</h2>
-        <a href="CVG.pdf" class="text-blue-500 hover:underline" download>Télécharger le CV</a>
+<header>
+  <div class="hero-left">
+    <span class="badge">Disponible pour alternance / stage</span>
+    <h1>Glyne<br><em>Ngongang</em></h1>
+    <p class="subtitle">Bachelor Cybersécurité · INGETIS Paris</p>
+    <p class="profil-text">
+      Étudiant en Bachelor Cybersécurité, issu d'une classe préparatoire scientifique MP.
+      Solides fondements en mathématiques, algorithmique et sciences de l'ingénieur,
+      appliqués à la sécurité des systèmes d'information et à l'analyse de données.
+      En quête d'un cycle ingénieur pour approfondir mon expertise technique.
+    </p>
+    <div class="contact-links">
+      <a href="tel:+33622200501">+33 6 22 20 05 01</a>
+      <a href="mailto:ngongangdjomo@gmail.com">ngongangdjomo@gmail.com</a>
+      <a href="https://www.linkedin.com/in/ngongang-glyne-24920027a" target="_blank">linkedin.com/in/ngongang-glyne</a>
+      <a href="https://github.com/damocles2002" target="_blank">github.com/damocles2002</a>
+      <a href="mailto:glyne-flankine.ngongang-djomo@epita.fr">glyne-flankine.ngongang-djomo@epita.fr</a>
     </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Expériences Data</div></div>
+      <div class="stat"><div class="stat-num">MP</div><div class="stat-label">Classe Prépa Sci.</div></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Langages maîtrisés</div></div>
+      <div class="stat"><div class="stat-num">Île-de-France</div><div class="stat-label">Localisation</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <h2>Expériences professionnelles</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Mars – Août 2025</div>
+        <div class="exp-company">Allianz France</div>
+        <div class="exp-location">Paris, France</div>
+      </div>
+      <div class="exp-content">
+        <h3>Data Analyst</h3>
+        <p>Direction Pricing, Pilotage, Performance et Data – Unité ABR.</p>
+        <p>Refonte et optimisation d'un script de calcul d'indicateurs de SAS/SQL vers Python. Automatisation de l'alimentation des résultats dans Excel et intégration de visualisations Power BI pour les équipes métier.</p>
+        <p>Participation à la mise en conformité des traitements avec les exigences de sécurité : anonymisation, gestion des accès, intégrité des données. Rédaction d'une documentation technique complète du pipeline.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">PySpark</span>
+          <span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">Power BI</span>
+          <span class="tag">Azure</span><span class="tag">Cybersécurité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Mai – Août 2024</div>
+        <div class="exp-company">Divercities</div>
+        <div class="exp-location">Douala, Cameroun</div>
+      </div>
+      <div class="exp-content">
+        <h3>Data Analyst (Stage)</h3>
+        <p>Direction Data et Tech.</p>
+        <p>Analyse des besoins utilisateurs pour la conception de tableaux de bord KPI. Structuration et automatisation du flux de collecte, traitement et stockage de données. Développement de rapports interactifs sous Power BI.</p>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Python</span>
+          <span class="tag">Numpy</span><span class="tag">Matplotlib</span><span class="tag">Pandas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Nov. 2025 – Présent</div>
+        <div class="exp-company">Le Patio Opéra</div>
+        <div class="exp-location">Paris, France</div>
+      </div>
+      <div class="exp-content">
+        <h3>Responsable Barman</h3>
+        <p>Gestion du service bar, coordination d'équipe et relation client dans un environnement dynamique.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="background: var(--surface);">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <h2>Compétences</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <h4>Langages</h4>
+      <ul><li>Python (Pandas, PySpark)</li><li>SQL / SAS</li><li>C / C++</li><li>Java</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Systèmes & Réseaux</h4>
+      <ul><li>Windows Server (2000→2022)</li><li>Linux (RedHat, Ubuntu)</li><li>TCP/IP, DHCP, VLAN, Firewall</li><li>Active Directory</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Sécurité & Cloud</h4>
+      <ul><li>Cybersécurité & Anonymisation</li><li>Gestion des accès</li><li>Azure</li><li>Kubernetes</li><li>VMware / Proxmox</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Outils</h4>
+      <ul><li>Power BI</li><li>Oracle SQL Developer</li><li>Eclipse IDE</li><li>Git / GitHub</li><li>SharePoint</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2>Projets & réalisations</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>Fil Rouge — Modernisation d'infrastructure</h3>
+      <p>Projet scolaire en cours. Modernisation des infrastructures informatiques d'une entreprise lors de son déménagement entre Genève et Paris.</p>
+      <div class="tags"><span class="tag">Réseau</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span></div>
+    </div>
+    <div class="project-card">
+      <h3>Sécurisation d'un SI d'entreprise</h3>
+      <p>Évaluation de l'architecture, identification des risques, proposition de mesures physiques et logiques, analyse comparative des schémas de sauvegarde.</p>
+      <div class="tags"><span class="tag">Cybersécurité</span><span class="tag">Audit</span><span class="tag">Pare-feu</span></div>
+    </div>
+    <div class="project-card">
+      <h3>Refonte & optimisation de scripts</h3>
+      <p>Migration d'un script de calcul d'indicateurs qualité de SAS/SQL vers Python. Automatisation Excel et visualisations Power BI.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
+    </div>
+    <div class="project-card">
+      <h3>Application gestion notes & absences</h3>
+      <p>Conception BDD et développement complet selon un cycle en V. Sécurisation et automatisation des traitements.</p>
+      <div class="tags"><span class="tag">Oracle SQL</span><span class="tag">Eclipse IDE</span><span class="tag">Cycle en V</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--surface);">
+  <div class="section-header">
+    <span class="section-num">04 —</span>
+    <h2>Formation</h2>
+  </div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-date">2024 – 2026</div>
+      <div class="edu-content">
+        <h3>Bachelor Cybersécurité</h3>
+        <div class="institution">INGETIS</div>
+        <div class="location">75005 Paris, France</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-date">2022 – 2024</div>
+      <div class="edu-content">
+        <h3>Classe Préparatoire Scientifique MP</h3>
+        <div class="institution">Notre-Dame de Grâce</div>
+        <div class="location">Maubeuge, France — Mathématiques, Statistiques & Programmation</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-date">2022 – 2023</div>
+      <div class="edu-content">
+        <h3>Faculté Informatique</h3>
+        <div class="institution">Université de Valenciennes</div>
+        <div class="location">Campus Mont Houy, Valenciennes, France</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-date">2020 – 2022</div>
+      <div class="edu-content">
+        <h3>Faculté des Sciences Physiques</h3>
+        <div class="institution">Université de Douala</div>
+        <div class="location">Douala, Cameroun</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-date">2019 – 2020</div>
+      <div class="edu-content">
+        <h3>Baccalauréat Scientifique</h3>
+        <div class="institution">Collège La Conquête</div>
+        <div class="location">Douala, Cameroun</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="name">Glyne Ngongang</div>
+  <div class="copy">Île-de-France · Français & Anglais · Basketball · Aide aux personnes âgées</div>
+  <a href="mailto:ngongangdjomo@gmail.com" class="cta-link">Me contacter →</a>
+</footer>
+
 </body>
 </html>
-
